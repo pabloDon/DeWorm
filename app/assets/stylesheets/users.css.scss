@@ -1,0 +1,61 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.big-center{
+	text-align: center;
+	width: 100%;
+	margin: 1.5em 0;
+	input{
+		font-size: 1.5em;
+		padding: .3em .6em;
+	}
+	.big-name{
+		font-size: 2em;
+	}
+}
+.big-action-center{
+	text-align: center;
+	input[type="submit"]{
+		width: auto;
+		padding: .3em 1.9em;
+		font-size: 1.4em;
+	}
+	margin: 0 0 1.5em 0;
+}
+.big-center-text{
+	text-align: center;
+	font-size: 1.5em;
+	margin: .5em 0;
+	.option_select{
+		margin-left: .3em;
+	}
+}
+
+li.big-button {
+	background-color: #5C97BF;
+	width: auto;
+	padding: .3em 1.9em;
+	font-size: 1.4em;
+	border-radius: .3em;
+	margin: 0 .3em;
+	color: white;
+	a{
+		color: white;
+		&:hover {
+			font-weight: 100;
+		};
+	}
+	&:hover{
+		font-weight: 100;
+		background-color: #CBD7C3;
+	}
+	&:active{
+		background-color: #B7C9A9;
+	};
+	&.selected {
+		background-color: #87D37C;
+	}
+}
+.new_user{
+	padding-top: 5em;
+}

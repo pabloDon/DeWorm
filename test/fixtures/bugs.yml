@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  priority: 1
+  severity: 1
+  status: 1
+  resolution: 1
+  version_planned: MyString
+  version_solved: MyString
+  summary: MyText
+  description: MyText
+
+two:
+  priority: 1
+  severity: 1
+  status: 1
+  resolution: 1
+  version_planned: MyString
+  version_solved: MyString
+  summary: MyText
+  description: MyText

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DeWorm</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noticia+Text' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	<h1 class="title"><%= set_title %></h1>
+	<%= render 'layouts/sidebar' %>
+	<div class="wrapper">
+		<p id="notice"><%= notice %></p>
+		<%= yield %>
+	</div>
+	
+	<div class="footer">
+		Made with <i class="fa fa-heart"></i> in Madrid (Spain)
+	</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+// Place all the styles related to the UserSessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.big-center{
+	text-align: center;
+	width: 100%;
+	margin: 1.5em 0;
+	input{
+		font-size: 1.5em;
+		padding: .3em .6em;
+	}
+}
+.big-action-center{
+	text-align: center;
+	input[type="submit"]{
+		width: auto;
+		padding: .3em 1.9em;
+		font-size: 1.4em;
+	}
+	margin: 0 0 1.5em 0;
+}
+.new_user_session{
+	padding-top: 5em;
+}

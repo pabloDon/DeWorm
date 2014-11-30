@@ -1,0 +1,79 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  assigned_me: Assigned to me to solve (1 - %{param1} of %{param2})
+  unassigned: Unassigned (1 - %{param1} of %{param2})
+  reporter: Reporter
+  assigned_to: Assigned to
+  priority: Priority
+  severity: Severity
+  status: Status
+  version_planned: Version planned
+  version_solved: Version solved
+  resolution: Resolution
+  attachments: Attachments
+  notes: Notes
+  historic: Historic
+  status_new: New
+  status_confirmed: Confirmed
+  status_assigned: Assigned
+  status_in_progress: In progress
+  status_completed: Completed
+  status_discard: Discard
+  priority_low: Low
+  priority_med: Medium
+  priority_high: High
+  severity_low: Low
+  severity_med: Medium
+  severity_high: High
+  resolution_open: Open
+  resolution_fixed: Fixed
+  resolution_unable_reproduce: Unable to reproduce
+  resolution_reopened: Reopened
+  resolution_duplicated: Duplicated
+  resolution_closed: Closed
+  created_new_bug: Created a new bug
+  solved_bug: Solved a bug
+  status_modified: Modified a bug status
+  bug_commented: Commented a bug
+  bug_attached: Attached a file to bug
+  see_more: See more
+  project_history: Project history
+  home: Home
+  new_bug: New bug
+  statistics: Statistics
+  profile: My profile
+  logout: Logout
+  attach_file: Attach a file
+  submit_upload: Upload
+  new_project: New project
+  placeholder_login: Login
+  placeholder_password: Password
+  placeholder_password_confirmation: Password Confirmation
+  placeholder_project_name: Project name
+  select_project: Select project
+  users_participating: Users participating
+  invite_user: Invite user
+  login_placeholder: Login name
+  no_bugs_unassigned: No bugs unassigned
+  no_bugs_assigned: No bugs assigned to you
+  lets_start_making_a_project: Welcome! Now let's start creating a project!

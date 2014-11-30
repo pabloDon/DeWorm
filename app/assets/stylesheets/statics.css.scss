@@ -1,0 +1,151 @@
+// Place all the styles related to the statics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.bug-date{
+	margin: 0 .3em;
+	
+}
+.bug-list{
+	padding: .3em;
+	margin: .3em 0;
+	border-radius: .4em;
+	p{
+		margin: 0;
+	}
+}
+ul.no-icon-list li{
+	list-style:none;
+}
+
+.low-priority{
+	background-color: rgba(117, 164, 199, 0.6);
+}
+.mid-priority{
+	background-color: rgba(252, 170, 112, 0.6);
+}
+.high-priority{
+	background-color: rgba(240, 74, 120, 0.6);
+}
+
+.main-page{
+	margin: 0 auto;
+	min-width: 500px;
+	padding-top: 5em;
+	min-height: 100%;
+	.home-row {
+		&#first{
+			background: url(asset-path('home_background_first.png')) repeat;
+			h1{
+				text-align: center;
+				font-size: 4em;
+				line-height: 1em;
+			}
+			p {
+				text-align: center;
+				font-size: 2.3em;
+				max-width: 27em;
+				margin: 0 auto;
+				line-height: 1.1em;
+			}
+			.cta{
+				margin: 0 auto;
+				text-align: center;
+				padding-top: 3em;
+				.cta-btn{
+					font-weight: 800;
+					color: white;
+					border-radius: .3em;
+					display: inline-block;
+					line-height: 1em;
+					background-color: #3B2570;
+					padding: .5em 1.9em;
+					font-size: 1.5em;
+					margin: 0 2em;
+					border: .25em solid black;
+				}
+			}
+		}
+		&#third{
+			background: url(asset-path('home_background_road.jpg')) no-repeat;
+			background-position: 0 -43em;
+			color: white;
+			.center{
+				padding-top: 2em;
+			}
+			h2{
+				margin-left: 3em;
+				font-size: 2em;
+				line-height: 1em;
+			}
+			ul{
+				margin-left: 7em;
+				font-size: 1.3em;
+				line-height: 1.5em;
+				padding-left:20px; 
+			}
+		}
+		&#fourth{
+			h2{
+				text-align: center;
+				font-size: 2em;
+				line-height: 1em;
+			}
+			img.desaturate { 
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				filter: grayscale(100%);
+			}
+			.gallery{
+				margin: 0 auto;
+				max-width: 900px;
+				min-width: 500px;
+				.img{
+					display: inline-block;
+					margin: 0 .9em;
+				}
+			}
+		}
+		.left {
+			display: inline-block;
+			margin-right: 10em;
+		}
+		.right {
+			display: inline-block;
+			* {
+				width: 400px;
+			}
+		}
+		.center {
+			padding: 5em;
+			.speech {
+				font-size: 2.3em;
+				font-style: italic;
+				text-align: center;
+				margin-bottom: .1em;
+				line-height: 1em;
+			}
+			.speech-footer{
+				text-align: right;
+				margin-right: 7em;
+				
+				
+			}
+		}
+	}
+}
+ul.participants{
+	li{
+		font-size: 1.3em;
+		line-height: 1.3em;
+	}
+}
+.invitation_form{
+	
+	.input, .button{
+		display: inline-block;
+	}
+	input {
+		font-size: 1em;
+		padding: .2em .3em;
+	}
+}

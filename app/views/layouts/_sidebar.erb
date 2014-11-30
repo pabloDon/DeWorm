@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	});
+</script>
+
+<div class="sidebar">
+	<%= image_tag "menu_sidebar.svg" , :class => "logo_sidebar" %>
+	<div class="sidebar_content">
+		<h2><%= current_user.login %></h2>
+		<%= form_tag search_bug_path do %>
+			<%= text_field_tag :bug_id, nil, :placeholder => "#bug" %>
+		<% end %>
+		<ul>
+			<li><%= link_to t(:home), index_project_path %></li>
+			<li><%= link_to t(:new_bug), new_bug_path %></li>
+			<!--<li><%#= link_to t(:statistics), '' %></li>-->
+			<li><%= link_to t(:profile), my_profile_path %></li>
+			<li><%= link_to t(:logout), logout_path %></li>
+		</ul>
+		<hr>
+		<h2><%= t :project_history %></h2>
+		<% BugHistoric.last_5.each do |his| %>
+			<ul class="sidebar_post">
+				<li class="sidebar_author">By 
+					<span class="author"><%= link_to his.user != nil ? his.user.login : '', '' %></span>
+				</li>
+				<li class="sidebar_date"><%= his.created_at.strftime "%D - %R" %></li>
+				<li class="sidebar_excerpt"><%= get_status_his his %>: <%= link_to his.bug.get_id, his.bug %></li>
+			</ul>
+		<% end %>
+		<ul class="sidebar_post">
+				<li class="sidebar_title"><%= link_to "...#{t :see_more}", timeline_path %></li>
+		</ul>
+	</div>
+</div>

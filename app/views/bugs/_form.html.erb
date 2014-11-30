@@ -1,0 +1,88 @@
+<script>
+	$(document).ready(function(){
+		<% unless @bug.new_record? %>
+		$('#content_summary').html("<%= @bug.summary %>");
+		$('#content_description').html("<%= @bug.description %>");
+		<% end %>
+		$('#content_summary').blur(function(){
+			$('#bug_summary').val($(this).html());
+		});
+		$('#content_description').blur(function(){
+			$('#bug_description').val($(this).html());
+		});
+	});
+</script>
+<%= form_for(@bug) do |f| %>
+  <% if @bug.errors.any? %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(@bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% @bug.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  <div class="field">
+    <h3><%= t :summary %></h2>
+  	<div class="input_editable" id="content_summary" contenteditable></div>
+  	<%= f.hidden_field :summary %>
+  </div>
+
+  <div class="field">
+  	<h3><%= t :description %></h3>
+  	<div class="input_editable" id="content_description" contenteditable></div>
+	<%= f.hidden_field :description %>
+  </div>
+  <div class="first_row">
+  	<div class="field">
+    	<h3><%= t :priority %></h3>
+    	<%= f.select :priority, options_for_priority %>
+  	</div>
+  
+	<div class="field">
+    	<h3><%= t :severity %></h3>
+    	<%= f.select :severity, options_for_severity %>
+  	</div>
+  </div>
+
+  <% unless @bug.new_record? %>
+  <div class="second_row">
+  	<div class="field">
+    	<h3><%= t :status %></h3>
+    	<%= f.select :status, options_for_status %>
+  	</div>
+
+  	<div class="field">
+    	<h3><%= t :resolution %></h3>
+    	<%= f.select :resolution, options_for_resolution %>
+  	</div>
+
+	<div class="field">
+    	<h3><%= t  :version_planned %></h3>
+    	<%= f.text_field :version_planned %>
+  	</div>
+
+	<div class="field">
+    	<h3><%= t :version_solved %></h3>
+    	<%= f.text_field :version_solved %>
+  	</div>
+  </div>
+  <div class="second_row">
+  	<div class="field">
+    	<h3><%= t :assigned_to %></h3>
+    	<%= f.select :assigned_to, options_for_assign(@bug.project_id), {:include_blank => t(:none), :selected => @bug.assigned_to} %>
+  	</div>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+
+	<%= link_to 'Cancel', bugs_path, :class => 'pseudo_input' %>
+  </div>
+<% end %>

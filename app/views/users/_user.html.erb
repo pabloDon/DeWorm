@@ -1,0 +1,57 @@
+<%= form_for @user do |form| %>  
+<% if @user.errors.any? %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+<div class="big-center">  
+	<p class="big-name">
+		<%= @user.login %>
+	</p>
+</div>
+
+<div class="big-center">  
+    <%= form.password_field :password, :placeholder => "Password" %>  
+</div>
+
+<div class="big-center">  
+    <%= form.password_field :password_confirmation, :placeholder => "Password confirmation" %>  
+</div>
+
+<div class="big-action-center">
+    <%= form.submit "Submit" %>  
+</div>  
+<% end %>
+
+<ul class="horizontal-list" style="text-align:center">
+<% @projects.each do |project| %>
+		<li class="big-button <%= "selected" if session[:project_id] == project.id%>">
+			<a href="<%= select_project_url(project.id) if session[:project_id] != project.id %>">
+				<%= project.name%> 
+				<span class="option_select">
+				<% if session[:project_id] == project.id %>
+					<i class='fa fa-unlock'></i>
+				<% else %>
+					<i class='fa fa-lock'></i>
+				<% end %>
+				</span>
+			</a>
+		</li>
+<% end %>
+</ul>
+		<div class="big-center big-action-center">
+			<%= form_tag projects_path, :method => :post do%>
+			    <%= text_field_tag :name, nil, :placeholder => t(:placeholder_project_name)%>
+
+			    <%= submit_tag "New project" %>
+			<% end %>
+		</div>

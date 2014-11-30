@@ -1,0 +1,86 @@
+<h1 class="bug-title">
+	<%= link_to "<i class='fa fa-pencil-square-o'></i>".html_safe, edit_bug_path(@bug) %>
+	<%= @bug.get_id %>
+	<span class="separator">&nbsp;</span>
+	<%= get_priority @bug %>
+	<span class="separator">&nbsp;</span>
+	<%= get_severity @bug %>
+	<span class="separator">&nbsp;</span>
+	<%= get_status @bug %>
+	<span class="separator">&nbsp;</span>
+	<%= get_resolution @bug %>
+	</h1>
+<p class="bug-summary"><%= @bug.summary %></p>
+<p class="bug-description"><%= @bug.description %></p>
+<ul class="bug-data no-icon-list">
+	<li><span class="title"><%= t :reporter %>: </span><%= @bug.user ? @bug.user.login : "" %></li>
+	<li><span class="title"><%= t :status %>: </span><%= get_status_text @bug %></li>
+	<% if @bug.is_assigned? %>
+	<li><span class="title"><%= t :assigned_to %>: </span><%= @bug.assigned_to != nil ? User.find(@bug.assigned_to).login : t(:none) %></li>
+	<% end %>
+	<li><span class="title"><%= t :priority %>: </span><%= get_priority_text @bug %></li>
+	<li><span class="title"><%= t :severity %>: </span><%= get_severity_text @bug %></li>
+	<% if @bug.is_in_progress? %>
+	<li><span class="title"><%= t :version_planned %>: </span><%= @bug.version_planned %></li>
+	<% end %>
+	<% if @bug.is_completed? %>
+	<li><span class="title"><%= t :version_solved %>: </span><%= @bug.version_solved %></li>
+	<% end %>
+	<li><span class="title"><%= t :resolution %>: </span><%= get_resolution_text @bug %></li>
+</ul>
+<h3><%= t :attachments %></h3>
+<ul class="bug-attachment no-icon-list horizontal-list">
+	<% @bug.attachments.each do |attach| %>
+		<li>
+			<div class="attachment">
+				<%= link_to get_image_attachment( attach ), attach.attach.url, :target => "_blank" %>
+			</div>
+		</li>
+	<% end %>
+	
+	<li>
+		<div class="attachment">
+			<%= link_to "<i class='fa fa-plus'></i>".html_safe, '#openModalAttach' %>
+		</div>
+	</li>
+	<div id="openModalAttach" class="modalDialogAttach modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2><%= t(:attach_file) %></h2>
+			<%= form_tag create_attachment_path, :multipart => true do%>
+				<p>
+					<%= file_field_tag :attach %>
+					<%= hidden_field_tag :bug_id, @bug.id %>
+				</p>
+				
+				<%= submit_tag t(:submit_upload) %>
+			<% end %>
+		</div>
+	</div>
+	
+</ul>
+<hr/>
+<h2><%= t :notes %> (<%= @bug.notes.count %>)</h2>
+<ul class="bug-notes no-icon-list">
+	<% @bug.notes.each do |note| %>
+	<li><div class="note">
+		<p class="author"><%= note.user != nil ? note.user.login : '' %> <span class="date"><%= note.created_at.strftime "%D - %R" %></span></p>
+		<p class="desc"><%= note.description %></p>
+	</div></li>
+	<% end %>
+	<%= form_tag notes_path, :method => "post" do %>
+		<div><%= text_area_tag :description %></div>
+		<%= hidden_field_tag :bug, @bug.id %>
+		<div class="buttons"><%= submit_tag%></div>
+	<% end %>
+</ul>
+<hr/>
+<h2><%= t :historic %> (<%= @bug.bug_historics.count %>)</h2>
+<ul class="bug-historic no-icon-list">
+	<% @bug.bug_historics.each do |bh| %>
+	<li>
+		<span class="date"><%= bh.created_at.strftime "%D - %R" %></span>
+		<span class="author"><%= bh.user!= nil ? bh.user.login : '' %></span> <%= get_status_his bh %>.
+	</li>
+	<% end %>
+</ul>

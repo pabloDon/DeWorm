@@ -1,0 +1,10 @@
+<h1>Timeline</h1>
+<ul class="no-icon-list">
+<% @history.each do |his| %>
+	<li class="timeline_list">
+		<span class="date"><%= his.created_at.strftime "%D - %R" %></span>
+		<span class="author"><%= link_to 'John Doe', '' %></span>
+		<span class="desc"><%= get_status_his his %>: <%= link_to his.bug.get_id, his.bug %></span>
+	</li>
+<% end %>
+</ul>

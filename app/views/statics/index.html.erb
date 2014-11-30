@@ -1,0 +1,48 @@
+<h2>
+<% if @bugs_4_me.size != 0 %>
+	<%= t(:assigned_me, :param1 => @bugs_4_me.size > 5 ? "5" : @bugs_4_me.size, :param2 => @bugs_4_me.size)%>
+<% else %>
+	<%= t(:no_bugs_assigned)%>
+<% end %>	
+</h2>
+<ul class="no-icon-list">
+	<% @bugs_4_me.take(5).each do |bug| %>
+		<li><div class="bug-list <%= get_priority_style bug %>">
+			<p><%= link_to bug.get_id, bug %><span class="bug-date"><%= bug.created_at.strftime "%D - %R" %></span></p>
+			<p><%= bug.summary %></p>
+		</div></li>
+	<% end %>
+</ul>
+
+<h2>
+<% if @bugs_unassigned.size != 0 %>
+	<%= t(:unassigned, :param1 => @bugs_unassigned.size > 5 ? "5" : @bugs_unassigned.size, :param2 => @bugs_unassigned.size) %>
+<% else %>
+	<%= t(:no_bugs_unassigned)%>
+<% end %>
+</h2>
+<ul class="no-icon-list">
+	<% @bugs_unassigned.take(5).each do |bug| %>
+		<li><div class="bug-list <%= get_priority_style bug %>">
+			<p><%= link_to bug.get_id, bug %><span class="bug-date"><%= bug.created_at.strftime "%D - %R" %></span></p>
+			<p><%= bug.summary %></p>
+		</div></li>
+	<% end %>
+</ul>
+
+<h2><%= t(:users_participating) %> (<%= @participants.count %>)</h2>
+<ul class="fa-ul participants">
+	<% @participants.each do |participant| %>
+		<li><i class="fa-li fa fa-check"></i> <%= participant.user.login %></li>
+	<% end %>
+</ul>
+<% if session[:project_id] != nil %>
+<div class="invitation_form">
+<%= form_tag invite_user_path, :method => "post" do %>
+	<div class="input"><%= text_field_tag :login, nil, :placeholder=>t(:login_placeholder) %></div>
+	<div class="button"><%= submit_tag t(:invite_user) %></div>
+<% end %>
+<% else %>
+	<h3><%= link_to t(:lets_start_making_a_project), my_profile_path %></h3>
+<% end %>
+</div>

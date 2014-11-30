@@ -1,0 +1,96 @@
+// Place all the styles related to the bugs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.bug-data{
+	li{
+		span.title{
+			font-weight: 600;
+		}
+	}
+}
+.bug-summary{
+	font-size: 1.06em;
+}
+.attachment{
+	border: 0.09em black dashed;
+	padding: .1em;
+	font-size: 4em;
+	border-radius: .3em;
+}
+ul.bug-attachment li{
+	margin: 0 .3em;
+}
+ul.bug-notes li{
+	div.note{
+		.author{
+			font-weight: 600;
+			span.date{
+				font-weight: 100;
+			}
+		}
+		.desc{
+			margin-left: 1.5em;
+		}
+	}
+}
+textarea#description{
+	width: 100%;
+	padding: 0.5em 0.3em;
+	font-size: 1em;
+}
+div.buttons{
+	text-align:right;
+}
+
+.title_priority_high{
+	 color: rgba(240, 74, 120, 0.6);
+}
+.title_priority_med{
+	 color: rgba(252, 170, 112, 0.6);
+}
+.title_priority_low{
+	 color: rgba(117, 164, 199, 0.6);
+}
+
+.input_editable{
+	border: .2em #eee dashed;
+	border-radius: 1.5em;
+	line-height: 1.5em;
+	font-size: 1.3em;
+	padding: .3em .6em;
+}
+.first_row {
+	text-align: center;
+	.field{
+		display: inline-block;
+		margin: 0 7em;
+	}
+}
+.second_row {
+	text-align: center;
+	.field{
+		display: inline-block;
+		margin: 0 2em;
+		input{
+			text-align: center;
+			font-size: 1.1em;
+			padding: 0.2em 0.3em;
+			width: 4em;
+		}
+	}
+}
+.actions{
+	margin-top: 1.5em;
+	*{
+		margin: 0 1.5em;
+	}
+}
+.timeline_list{
+	margin: .5em 0;
+	.date{
+		margin: 0 .3em;
+	}
+	.author{
+		margin: 0 .3em;
+	}
+}
